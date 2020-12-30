@@ -23,7 +23,7 @@ exports.create = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 10),
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    emp_id: req.body.emp_id
+    emp_id: req.body.emp_id,
   });
   /**
    * Save user to database
@@ -54,4 +54,3 @@ exports.findAll = (req, res) => {
       });
     });
 };
-
