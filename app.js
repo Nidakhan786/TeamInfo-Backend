@@ -17,5 +17,6 @@ app.use("/users", require("./routes/user_route"));
 app.use("/auth", require("./auth/index"));
 app.use("/signup", require("./routes/register_route"));
 app.use("/news", require("./routes/news_route"));
+app.use("/technology", require("./routes/technology_route"));
 app.listen(8000);
 console.log("Listening to PORT 8000");
