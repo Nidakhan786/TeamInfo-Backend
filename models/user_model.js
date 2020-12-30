@@ -32,9 +32,10 @@ const schema = new mongoose.Schema(
       desc: "The user's employee id.",
       trim: true,
       type: Number,
+      index: true,
+      unique: true,
       required: true,
     },
- 
   },
   {
     strict: true,

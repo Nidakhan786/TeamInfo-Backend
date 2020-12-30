@@ -25,12 +25,10 @@ function verifyToken(req, res, next) {
       .findOne({ _id: req.userId })
       .then((user) => {
         if (!user)
-          return res
-            .status(403)
-            .send({
-              auth: false,
-              message: "Token is not valid. Please provide valid token.",
-            });
+          return res.status(403).send({
+            auth: false,
+            message: "Token is not valid. Please provide valid token.",
+          });
 
         req.curentUser = user;
         next();

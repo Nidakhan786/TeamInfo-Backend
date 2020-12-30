@@ -4,7 +4,6 @@ const Users = require("../models/user_model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const config = require("../config/index");
-var sessions = require("express-session");
 
 router.post("/login", function (req, res) {
   Users.findOne({ email: req.body.email })
@@ -30,7 +29,7 @@ router.post("/login", function (req, res) {
         user: req.sessions,
         sessionID: req.sessions.id,
       };
-    
+
       return res.status(200).send(Result);
     })
     .catch((error) => {
