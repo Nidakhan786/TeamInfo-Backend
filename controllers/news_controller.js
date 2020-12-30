@@ -1,9 +1,9 @@
 /**
- * User controller : All business logic goes here
+ * News controller : All business logic goes here
  */
 const News = require("../models/news_model");
 /**
- * this method is to create the user
+ * this method is to create the news
  */
 exports.createNews = (req, res) => {
   /**
@@ -15,14 +15,14 @@ exports.createNews = (req, res) => {
     });
   }
   /**
-   * Create a user
+   * Create a news
    */
   const news = new News({
     newsHeading: req.body.newsHeading,
     newsDescription: req.body.newsDescription,
   });
   /**
-   * Save user to database
+   * Save mews to database
    */
   news
     .save()
