@@ -1,3 +1,4 @@
+const { Schema } = require("mongoose");
 const mongoose = require("../db");
 const schema = new mongoose.Schema(
   {
@@ -36,6 +37,15 @@ const schema = new mongoose.Schema(
       unique: true,
       required: true,
     },
+    technologies : [{
+      type : Schema.Types.ObjectId,
+      ref: "Technology"
+
+    }],
+    projects : [{
+      type : Schema.Types.ObjectId,
+      ref: "Projects"
+    }]
   },
   {
     strict: true,

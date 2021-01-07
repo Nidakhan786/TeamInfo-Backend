@@ -1,6 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const router = require("express-promise-router")();
 const userControllr = require("../controllers/user_controller");
-router.post("/", userControllr.create);
+const { validateBody, schemas } = require("../helpers/route_helper");
+
+router.route("/").post(validateBody(schemas.userSchema), userControllr.create);
 
 module.exports = router;

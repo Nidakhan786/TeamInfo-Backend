@@ -1,3 +1,4 @@
+const { Schema } = require("mongoose");
 const mongoose = require("../db");
 const schema = new mongoose.Schema(
   {
@@ -18,6 +19,10 @@ const schema = new mongoose.Schema(
         "Others",
       ],
       required: true,
+    },
+    users: {
+      type: Schema.Types.ObjectId,
+      ref: "Users",
     },
   },
   {

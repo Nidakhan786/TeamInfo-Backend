@@ -1,22 +1,51 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
+const logger = require("morgan");
 var bodyParser = require("body-parser");
-var db = require("./db");
-const router = express.Router();
+const router = require("express-promise-router")();
 const auth = require("./auth/verify-token");
-/**
- * parse requests of content-type - application/json
- */
+
+//MiddleWares
+app.use(logger("dev"));
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
-/**
- * parse requests of content-type - application/x-www-form-urlencoded
- */
+
+ //Catch 404 errors and pass them to Error Handler
+//  app.use ((req, res, next) => {
+//   const err = new Error("Not Found");
+//   err.status = 404;
+//   next(err);
+// });
+//Error Handler Function
+app.use((err, req, res, next) => {
+  const error = app.get("env") === "development" ? err : {};
+  const status = err.status || 500;
+
+  //Response to Client
+  res.status(status).json({
+    error: {
+      message: error.message,
+    },
+  });
+ 
+
+  // Respond to ourselves
+  console.error(err);
+});
+
+// parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/", router);
+
+// Routes
 app.use("/users", require("./routes/user_route"));
 app.use("/auth", require("./auth/index"));
 app.use("/signup", require("./routes/register_route"));
 app.use("/news", require("./routes/news_route"));
+app.use("/teammembers", require("./routes/teammembers_route"));
 app.use("/technology", require("./routes/technology_route"));
-app.listen(8000);
-console.log("Listening to PORT 8000");
+
+// Start the Server
+const port = app.get("port") || 8000;
+app.listen(port, () => {
+  console.log("Listening to PORT " + port);
+});
