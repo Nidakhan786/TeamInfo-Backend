@@ -1,9 +1,13 @@
+const { Schema } = require("mongoose");
 const mongoose = require("../db");
 const schema = new mongoose.Schema(
   {
     techname: {
       desc: "Technology Name",
+      trim: true,
       type: String,
+      index: true,
+      unique: true,
       required: true,
     },
     usedfor: {
@@ -19,6 +23,7 @@ const schema = new mongoose.Schema(
       ],
       required: true,
     },
+   
   },
   {
     strict: true,

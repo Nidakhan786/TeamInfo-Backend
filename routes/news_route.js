@@ -1,6 +1,11 @@
 const express = require("express");
-const router = express.Router();
+const router = require("express-promise-router")();
+const { schemas, validateBody } = require("../helpers/route_helper");
 const newsControllr = require("../controllers/news_controller");
-router.post("/", newsControllr.createNews);
-router.get("/", newsControllr.getAllNews);
+
+router
+  .route("/")
+  .get(newsControllr.getAllNews)
+  .post(validateBody(schemas.newsSchema), newsControllr.createNews);
+
 module.exports = router;
