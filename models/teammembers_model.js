@@ -1,29 +1,27 @@
 const mongoose = require("../db");
+const { Schema } = require("mongoose");
 const schema = new mongoose.Schema(
   {
     totalExperience: {
-      desc: "The user's total experience.",
-      trim: true,
+      desc:"The user's total experience.",
       type: Number,
-      index: true,
-      unique: true,
       required: true,
     },
     name: {
       desc: "The user's name.",
-      trim: true,
       type: String,
       required: true,
     },
   
     emp_id: {
       desc: "The user's employee id.",
-      trim: true,
       type: Number,
-      index: true,
-      unique: true,
-      required: true,
+    
     },
+    projects : [{
+      type : Schema.Types.ObjectId,
+      ref: "Projects"
+    }],
     role: {
         desc: "User's Role",
         type: String,
@@ -37,11 +35,13 @@ const schema = new mongoose.Schema(
           "IOS Developer",
           "Architect",
           "Others",
+          "Project Manager"
         ],
         required: true,
       },
       expertIn: []
   },
+
   {
     strict: true,
     versionKey: false,

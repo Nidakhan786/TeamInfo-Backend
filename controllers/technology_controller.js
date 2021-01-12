@@ -9,12 +9,12 @@ module.exports = {
     const tech = new Technology(req.body);
     // Save the Technology to database
     const technology = await tech.save();
-    res.status(201).json(technology);
+    res.status(200).json(technology);
   },
 
   // get All technologies
   getAllTech: async (req, res, next) => {
     const technologiesList = await Technology.find();
-    res.status(201).json(technologiesList);
+    res.status(200).json(technologiesList);
   },
 };

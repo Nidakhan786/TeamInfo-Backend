@@ -45,6 +45,11 @@ module.exports = {
       emp_id: Joi.number().required(),
       expertIn: Joi.array().required()
     }),
+    projectsSchema: Joi.object().keys({
+      projectName: Joi.string().required(),
+      projectDescription: Joi.string().required(),
+      teamMembers: Joi.string(),
+    }),
     isSchemas: Joi.object().keys({
       param: Joi.string()
         .regex(/^[0-9a-fA-F]{24}$/)

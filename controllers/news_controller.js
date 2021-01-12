@@ -8,12 +8,12 @@ module.exports = {
     const news = new News(req.body);
     // Save news to database
     const newNews = await news.save();
-    res.status(201).json(newNews);
+    res.status(200).json(newNews);
   },
 
   // get All News
   getAllNews: async (req, res, next) => {
     const news = await News.find();
-    res.status(201).json(news);
+    res.status(200).json(news);
   },
 };

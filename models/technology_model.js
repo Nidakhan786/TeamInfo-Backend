@@ -4,7 +4,10 @@ const schema = new mongoose.Schema(
   {
     techname: {
       desc: "Technology Name",
+      trim: true,
       type: String,
+      index: true,
+      unique: true,
       required: true,
     },
     usedfor: {
@@ -20,10 +23,7 @@ const schema = new mongoose.Schema(
       ],
       required: true,
     },
-    users: {
-      type: Schema.Types.ObjectId,
-      ref: "Users",
-    },
+   
   },
   {
     strict: true,
