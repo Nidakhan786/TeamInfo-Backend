@@ -48,7 +48,8 @@ module.exports = {
     projectsSchema: Joi.object().keys({
       projectName: Joi.string().required(),
       projectDescription: Joi.string().required(),
-      teamMembers: Joi.string(),
+      teamMembers: Joi.required(),
+      projectManager: Joi.required()
     }),
     isSchemas: Joi.object().keys({
       param: Joi.string()

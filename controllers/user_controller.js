@@ -14,6 +14,7 @@ module.exports = {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       emp_id: req.body.emp_id,
+      role: req.body.role
     });
     // Save user to database
     const newUser = await user.save();
@@ -39,14 +40,14 @@ module.exports = {
   getUsersTechnologies: async (req, res, next) => {
     const { userId } = req.params;
     const user = await User.findById(userId).populate('technologies');
-    console.log("user", user);
+
     res.status(200).json(user.technologies);
   },
 
   newUserTechnology: async (req, res, next) => {
     const { userId } = req.params;
     const newTech = new Technology(req.body);
-    console.log("newCar", newTech);
+
     const user = await User.findById(userId);
     newTech.users = user;
     await newTech.save();

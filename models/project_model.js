@@ -8,15 +8,14 @@ const schema = new mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "Technology",
     },
-    teamMembers: {
+    teamMembers: [{
+      type:[ Schema.Types.ObjectId],
+      ref: "Users",
+    }],
+    projectManager: [{
       type: Schema.Types.ObjectId,
-      ref: "TeamMembers",
-    },
-    projectManager: {
-      type: Schema.Types.ObjectId,
-      ref: "TeamMembers",
-    },
-  },
+      ref: "Users",
+    }],  },
   {
     strict: true,
     versionKey: false,
