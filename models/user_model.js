@@ -37,23 +37,23 @@ const schema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    // role:{
-    //   desc: "User's Role",
-    //   type: String,
-    //   enum: [
-    //     "Frontend Developer",
-    //     "Backend Developer",
-    //     "QA Tester",
-    //     "Automation tester",
-    //     "Hybrid Application Developer",
-    //     "Android Developer",
-    //     "IOS Developer",
-    //     "Architect",
-    //     "Others",
-    //     "Project Manager"
-    //   ],
-    //   required: true,
-    // },
+    role:{
+      desc: "User's Role",
+      type: String,
+      enum: [
+        "Frontend Developer",
+        "Backend Developer",
+        "QA Tester",
+        "Automation tester",
+        "Hybrid Application Developer",
+        "Android Developer",
+        "IOS Developer",
+        "Architect",
+        "Others",
+        "Project Manager"
+      ],
+      required: true,
+    },
     technologies : [{
       type : Schema.Types.ObjectId,
       ref: "Technology"

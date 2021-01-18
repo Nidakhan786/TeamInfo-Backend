@@ -21,10 +21,12 @@ module.exports = {
     const member = project.projectManager;
     var lengths = member.length;
     for (let i = 0; i < lengths; i++) {
+   
       const user = await Users.findById(member[i]);
+
       user.projects.push(project);
- 
       await user.save();
+    
     }
     //  teamMembers.projects.push(project);
     //     teamMembers.save();
