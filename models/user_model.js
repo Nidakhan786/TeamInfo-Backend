@@ -51,8 +51,7 @@ const schema = new mongoose.Schema(
         "Architect",
         "Others",
         "Project Manager"
-      ],
-      required: true,
+      ]
     },
     technologies : [{
       type : Schema.Types.ObjectId,
