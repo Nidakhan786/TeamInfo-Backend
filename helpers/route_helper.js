@@ -29,7 +29,7 @@ module.exports = {
       first_name: Joi.string().required(),
       last_name: Joi.string().required(),
       emp_id: Joi.number().required(),
-      role: Joi.string().required()
+      role: Joi.string()
     }),
     newsSchema: Joi.object().keys({
       newsHeading: Joi.string().required(),
@@ -49,8 +49,7 @@ module.exports = {
     projectsSchema: Joi.object().keys({
       projectName: Joi.string().required(),
       projectDescription: Joi.string().required(),
-      teamMembers: Joi.required(),
-      projectManager: Joi.required()
+    
     }),
     isSchemas: Joi.object().keys({
       param: Joi.string()
