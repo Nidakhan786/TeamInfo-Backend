@@ -23,7 +23,12 @@ const schema = new mongoose.Schema(
       ],
       required: true,
     },
-   
+    projects: [
+      {
+        type: [Schema.Types.ObjectId],
+        ref: "Projects",
+      },
+    ],
   },
   {
     strict: true,

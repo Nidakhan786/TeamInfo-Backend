@@ -4,18 +4,27 @@ const schema = new mongoose.Schema(
   {
     projectName: String,
     projectDescription: String,
-    projectTechnology: {
-      type: Schema.Types.ObjectId,
-      ref: "Technology",
-    },
-    teamMembers: [{
-      type:[ Schema.Types.ObjectId],
-      ref: "Users",
-    }],
-    projectManager: [{
-      type: Schema.Types.ObjectId,
-      ref: "Users",
-    }],  },
+    teamMembers: [
+      {
+        type: [Schema.Types.ObjectId],
+        ref: "Users",
+      },
+    ],
+    projectManager: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Users",
+      },
+    ],
+    technologies: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Technology",
+      },
+    ],
+    startDate: Date,
+    endDate: Date,
+  },
   {
     strict: true,
     versionKey: false,

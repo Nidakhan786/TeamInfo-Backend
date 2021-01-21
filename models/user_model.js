@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const { Schema } = require("mongoose");
 const mongoose = require("../db");
 const schema = new mongoose.Schema(
@@ -37,7 +38,7 @@ const schema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    role:{
+    role: {
       desc: "User's Role",
       type: String,
       enum: [
@@ -50,18 +51,22 @@ const schema = new mongoose.Schema(
         "IOS Developer",
         "Architect",
         "Others",
-        "Project Manager"
-      ]
+        "Project Manager",
+      ],
+      required: true,
     },
-    technologies : [{
-      type : Schema.Types.ObjectId,
-      ref: "Technology"
-
-    }],
-    projects : [{
-      type : [Schema.Types.ObjectId],
-      ref: "Projects"
-    }]
+    technologies: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Technology",
+      },
+    ],
+    projects: [
+      {
+        type: [Schema.Types.ObjectId],
+        ref: "Projects",
+      },
+    ],
   },
   {
     strict: true,

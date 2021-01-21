@@ -15,12 +15,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
-app.use("/users",cors(),  require("./routes/user_route"));
-app.use("/auth",cors(), require("./auth/index"));
+app.use("/users", cors(), require("./routes/user_route"));
+app.use("/auth", cors(), require("./auth/index"));
 app.use("/signup", cors(), require("./routes/register_route"));
-app.use("/news",cors(), require("./routes/news_route"));
+app.use("/news", cors(), require("./routes/news_route"));
 app.use("/teammembers", cors(), require("./routes/teammembers_route"));
-app.use("/technology",  cors(),require("./routes/technology_route"));
+app.use("/technology", cors(), require("./routes/technology_route"));
 app.use("/projects", cors(), require("./routes/projects_route"));
 
 //Catch 404 errors and pass them to Error Handler

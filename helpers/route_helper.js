@@ -28,7 +28,7 @@ module.exports = {
       password: Joi.string().required(),
       first_name: Joi.string().required(),
       last_name: Joi.string().required(),
-      emp_id: Joi.number().required()
+      emp_id: Joi.number().required(),
     }),
     newsSchema: Joi.object().keys({
       newsHeading: Joi.string().required(),
@@ -43,12 +43,17 @@ module.exports = {
       name: Joi.string().required(),
       role: Joi.string().required(),
       emp_id: Joi.number().required(),
-      expertIn: Joi.array().required()
+      role: Joi.string().required(),
+      expertIn: Joi.array().required(),
     }),
     projectsSchema: Joi.object().keys({
       projectName: Joi.string().required(),
       projectDescription: Joi.string().required(),
-    
+      teamMembers: Joi.required(),
+      projectManager: Joi.required(),
+      technologies: Joi.required(),
+      startDate: Joi.date().required(),
+      endDate: Joi.date(),
     }),
     isSchemas: Joi.object().keys({
       param: Joi.string()
