@@ -6,6 +6,7 @@ const {
   schemas,
   validateBody,
 } = require("../helpers/route_helper");
+const { schema } = require("../models/user_model");
 router.route("/").get(userControllr.findAll);
 
 router
@@ -13,7 +14,8 @@ router
   .get(
     validateParams(schemas.isSchemas, "userId"),
     userControllr.getUserProfile
-  );
+  )
+  .put(userControllr.editProfile);
 
 router
   .route("/:userId/technologies")

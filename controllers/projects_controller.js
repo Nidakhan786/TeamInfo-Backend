@@ -43,7 +43,21 @@ module.exports = {
 
   // get All Projects
   getAllProjects: async (req, res, next) => {
-    const projects = await Projects.find();
+    const projects = await Projects.find()
+      .populate("technologies")
+      .populate("teamMembers")
+      .populate("projectManager");
     res.status(200).json(projects);
+  },
+
+  getProjectinfo: async (req, res, next) => {
+    const { projectId } = req.params;
+    const project = await Projects.findById(projectId);
+    if (!project) {
+      return res.status(404).send({
+        message: "User not found with id " + req.params.id,
+      });
+    }
+    res.status(200).json(project);
   },
 };

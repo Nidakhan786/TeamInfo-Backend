@@ -29,6 +29,7 @@ module.exports = {
       first_name: Joi.string().required(),
       last_name: Joi.string().required(),
       emp_id: Joi.number().required(),
+      role: Joi.string(),
     }),
     newsSchema: Joi.object().keys({
       newsHeading: Joi.string().required(),

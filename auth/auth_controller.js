@@ -25,8 +25,8 @@ router.post("/login", function (req, res) {
 
       let Result = {
         auth: true,
+        userid: user._id,
         token: token,
-        user: req.sessions,
         sessionID: req.sessions.id,
       };
 

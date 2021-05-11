@@ -14,7 +14,7 @@ module.exports = {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       emp_id: req.body.emp_id,
-      role: req.body.role
+      role: req.body.role,
     });
     // Save user to database
     const newUser = await user.save();
@@ -23,13 +23,15 @@ module.exports = {
 
   // Finding all Users
   findAll: async (req, res, next) => {
-    const user = await User.find();
+    const user = await User.find().populate("projects");
     res.status(200).json(user);
   },
 
   getUserProfile: async (req, res, next) => {
     const { userId } = req.params;
-    const user = await User.findById(userId);
+    const user = await User.findById(userId)
+      .populate("projects")
+      .populate("technologies");
     if (!user) {
       return res.status(404).send({
         message: "User not found with id " + req.params.id,
@@ -39,7 +41,7 @@ module.exports = {
   },
   getUsersTechnologies: async (req, res, next) => {
     const { userId } = req.params;
-    const user = await User.findById(userId).populate('technologies');
+    const user = await User.findById(userId).populate("technologies");
 
     res.status(200).json(user.technologies);
   },
@@ -54,5 +56,28 @@ module.exports = {
     user.technologies.push(newTech);
     await user.save();
     res.status(200).json(newTech);
+  },
+  editProfile: async (req, res, next) => {
+    const { userId } = req.params;
+    const user = await User.findByIdAndUpdate(userId, req.body, { new: true });
+    if (!user) {
+      return res.status(404).send({
+        message: "no user found",
+      });
+    }
+    res.status(200).json(user);
+    // .then((user) => {
+    //   if (!user) {
+    //     return res.status(404).send({
+    //       message: "no user found",
+    //     });
+    //   }
+    //   res.status(200).send(user);
+    // })
+    // .catch((err) => {
+    //   return res.status(404).send({
+    //     message: "error while updating the post",
+    //   });
+    // });
   },
 };
